@@ -1,16 +1,19 @@
 var express = require('express');
 var app = express();
 
-fs.readFileSync('index.html', function (err, data){
-    if (err) throw err;
-    console.log(data);
-});
+var fs =require('fs');
 
 
 app.use(express.logger());
 
-app.get('/', function(request, response) {
+/*app.get('/', function(request, response) {
   response.send('test');
+});
+*/
+
+app.get(fs.readFile('/home/dts/bitstarter/index.html', function (err, data){
+    if (err) throw err;
+    console.log(data);
 });
 
 var port = process.env.PORT || 5000;
